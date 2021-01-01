@@ -48,6 +48,8 @@ const App = (props) => {
     <div>
       <Router>
 
+TEST
+
         <Menu></Menu>
 
         <Notification />
