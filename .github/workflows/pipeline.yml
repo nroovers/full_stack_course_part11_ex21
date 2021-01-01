@@ -4,6 +4,7 @@ on: #event triggers
   push:
     branches:
       - master
+  workflow_dispatch
 
 jobs: # jobs executed when event triggered
   simple_deployment_pipeline:
