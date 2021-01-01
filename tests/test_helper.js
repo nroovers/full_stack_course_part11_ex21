@@ -4,21 +4,21 @@ const Blog = require('../models/blog')
 
 const initialBlogs = [
     {
-        title: "Travel blog",
-        author: "Aava",
-        url: "http://www.travel.com",
+        title: 'Travel blog',
+        author: 'Aava',
+        url: 'http://www.travel.com',
         likes: 5
     },
     {
-        title: "React blog",
-        author: "Nicolai",
-        url: "http://www.react.com",
+        title: 'React blog',
+        author: 'Nicolai',
+        url: 'http://www.react.com',
         likes: 3
     },
     {
-        title: "Toy blog",
-        author: "Lilja",
-        url: "http://www.lelut.fi",
+        title: 'Toy blog',
+        author: 'Lilja',
+        url: 'http://www.lelut.fi',
         likes: 7
     }
 ]

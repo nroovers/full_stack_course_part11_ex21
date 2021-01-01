@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
-const User = require('../models/user')
+// const User = require('../models/user')
 const testhelper = require('./test_helper')
 
 const api = supertest(app)
@@ -23,7 +23,8 @@ describe('Users API POST', () => {
             password: 'geheim',
         }
 
-        const savedUser = await api
+        // const savedUser = await api
+        await api
             .post('/api/users')
             .send(newUser)
             .expect(200)

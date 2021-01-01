@@ -12,14 +12,13 @@ const loginRouter = require('./controllers/login')
 
 const mongoUrl = config.MONGODB_URI
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => {
+  .then(() => {
     console.log('connected to MongoDB')
   })
   .catch(error => {
     console.log('error connecting to MongoDB:', error.message)
     // console.log(error)
-  })
-  
+})
 
 app.use(middleware.requestLogger)
 

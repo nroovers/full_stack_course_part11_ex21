@@ -3,15 +3,17 @@ import { connect } from 'react-redux'
 
 import {
   BrowserRouter as Router,
-  Route, Redirect
+  Route,
+  withRouter,
+//   Redirect
 } from 'react-router-dom'
 
 // import blogsService from './services/blogs'
 // import loginService from './services/login'
 import Notification from './components/Notification'
-import Blogs from './components/Blogs'
-import BlogView from './components/BlogView'
-import UserList from './components/UserList'
+// import Blogs from './components/Blogs'
+// import BlogView from './components/BlogView'
+// import UserList from './components/UserList'
 import UserView from './components/UserView'
 // import BlogForm from './components/BlogForm'
 // import Toggable from './components/Toggable'
@@ -50,7 +52,8 @@ const App = (props) => {
 
         <Notification />
 
- z        <Route exact path="/users/:id" render={({ match }) => <UserView userid={match.params.id} />} />
+         <Route exact path="/users/:id" render={({ match }) => <UserView userid={match.params.id} />} />
+         <Route exact path="/login" render={() => <Login />} />
       </Router>
     </div>
   )

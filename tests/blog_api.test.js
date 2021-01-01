@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
-const Blog = require('../models/blog')
+// const Blog = require('../models/blog')
 const testhelper = require('./test_helper')
 
 const api = supertest(app)
@@ -43,21 +43,22 @@ describe('api GET', () => {
 describe('api POST', () => {
 
     const newBlog = {
-        title: "New blog",
-        author: "Hanna",
-        url: "http://www.newkidsontheblog.com",
+        title: 'New blog',
+        author: 'Hanna',
+        url: 'http://www.newkidsontheblog.com',
         likes: 1
     }
 
     test('saved blog has the same title', async () => {
         const response = await api.post('/api/blogs').send(newBlog)
 
-        expect(response.body.title).toBe("New blog")
+        expect(response.body.title).toBe('New blog')
     })
 
     test('new blog added to the database', async () => {
         await api
             .post('/api/blogs')
+            .set('Authorization', 'bearer ' + process.env.TEST_TOKER)
             .send(newBlog)
             .expect(201)
             .expect('Content-Type', /application\/json/)
@@ -69,20 +70,34 @@ describe('api POST', () => {
     })
 
     test('post sets likes to zero if not defined', async () => {
+
+
+        const token = await api.post('/api/login').send({
+            "username": "user2",
+            "password": "sekret123"
+        })
+
+
+        console.log('----------------------- ' + token + '-------------------------------')
+
         const blogWithoutLikes = {
-            title: "New blog",
-            author: "Hanna",
-            url: "http://www.newkidsontheblog.com"
+            title: 'New blog',
+            author: 'Hanna',
+            url: 'http://www.newkidsontheblog.com'
         }
 
-        const response = await api.post('/api/blogs').send(blogWithoutLikes)
+        const response = await api
+            .post('/api/blogs')
+            .set('Authorization', 'bearer ' + token.token)
+            .send(blogWithoutLikes)
+
         expect(response.body.likes).toBe(0)
     })
 
     test('no title throws 400 error', async () => {
         const blogWithoutTitle = {
-            author: "Hanna",
-            url: "http://www.newkidsontheblog.com"
+            author: 'Hanna',
+            url: 'http://www.newkidsontheblog.com'
         }
 
         await api.post('/api/blogs').send(blogWithoutTitle).expect(400)
@@ -90,8 +105,8 @@ describe('api POST', () => {
 
     test('no url throws 400 error', async () => {
         const blogWithoutUrl = {
-            title: "New blog",
-            author: "Hanna"
+            title: 'New blog',
+            author: 'Hanna'
         }
 
         await api.post('/api/blogs').send(blogWithoutUrl).expect(400)

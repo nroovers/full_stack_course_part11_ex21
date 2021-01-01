@@ -26,7 +26,7 @@ const Comments = (props) => {
         <div>
             <Header as='h3'>Comments</Header>
             <div>
-                <Input name="comment" {...commentInputProps} data-cy='comment-field'/> 
+                <Input name="comment" {...commentInputProps} data-cy='comment-field'/>
                 <Button primary data-cy='add-comment-btn' onClick={handleAddComment}>add</Button>
             </div>
             <div>

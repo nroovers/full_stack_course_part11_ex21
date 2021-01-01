@@ -42,11 +42,11 @@ blogsRouter.post('', async (request, response, next) => {
         // const user = storedUsers[0] /////////////////////////////
 
         // blog.user = user._id;
-        blog.user = user;
+        blog.user = user
 
         const savedBlog = await blog.save()
 
-        user.blogs = user.blogs.concat(savedBlog._id);
+        user.blogs = user.blogs.concat(savedBlog._id)
         await user.save()
 
         response.status(201).json(savedBlog)
@@ -57,39 +57,43 @@ blogsRouter.post('', async (request, response, next) => {
 })
 
 blogsRouter.post('/:id/comments', async (request, response, next) => {
+    try {
 
-    console.log('/:id/comments')
+        console.log('/:id/comments')
 
-    const comment = request.body.text
+        const comment = request.body.text
 
-    const blog = await Blog.findById(request.params.id)
+        const blog = await Blog.findById(request.params.id)
 
-    if (!blog)
-        return response.status(400).json({ error: 'blog not found' })
-
-
-    // const newBlog = { ...blog }
-    const newBlog = copyBlog(blog)
-
-    console.log('blog', blog)
-    console.log('request.params.id', request.params.id)
-
-    console.log('newblog', newBlog)
-    console.log('request.body', request.body)
+        if (!blog)
+            return response.status(400).json({ error: 'blog not found' })
 
 
-    newBlog.comments = !newBlog.comments
-        ? [comment]
-        : newBlog.comments.concat(comment)
+        // const newBlog = { ...blog }
+        const newBlog = copyBlog(blog)
 
-    console.log('newblog', newBlog)
+        console.log('blog', blog)
+        console.log('request.params.id', request.params.id)
 
-    const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, newBlog, { new: true })
+        console.log('newblog', newBlog)
+        console.log('request.body', request.body)
 
-    console.log('updatedBlog', updatedBlog)
 
-    response.json(updatedBlog.toJSON())
+        newBlog.comments = !newBlog.comments
+            ? [comment]
+            : newBlog.comments.concat(comment)
 
+        console.log('newblog', newBlog)
+
+        const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, newBlog, { new: true })
+
+        console.log('updatedBlog', updatedBlog)
+
+        response.json(updatedBlog.toJSON())
+    }
+    catch (error) {
+        next(error)
+    }
 })
 
 

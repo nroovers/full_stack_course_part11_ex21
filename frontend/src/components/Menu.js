@@ -12,13 +12,12 @@ const AppMenu = (props) => {
     // const padding = {
     //     paddingRight: 5
     // }
-    // console.log(props.login)
+    console.log('props.login', props.login)
 
-    const handleLogout = (event) => {
+    const handleLogout = () => {
         window.localStorage.removeItem('loggedUser')
         props.resetLogin()
       }
-
 
     return (
         <Menu>
@@ -32,7 +31,7 @@ const AppMenu = (props) => {
                 {props.login
                     ?
                     <>
-                        <Menu.Item>{props.login.name} logged in</Menu.Item>
+                        <Menu.Item> {props.login.name.first} logged in</Menu.Item>
                         <Menu.Item><Button onClick={handleLogout}>logout</Button></Menu.Item>
                     </>
                     : null

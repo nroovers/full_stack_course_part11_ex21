@@ -32,7 +32,7 @@ const blogs = [
 ]
 
 
-const setToken = (token) => {}
+const setToken = () => {}
 
 const getAll = () => {
   return Promise.resolve(blogs)

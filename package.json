@@ -7,7 +7,11 @@
     "start": "cross-env NODE_ENV=production node index.js",
     "watch": "cross-env NODE_ENV=development nodemon index.js",
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
-    "start:test": "cross-env NODE_ENV=test node index.js"
+    "lint": "eslint .",
+    "start:test": "cross-env NODE_ENV=test node index.js",
+    "build:ui": "rmdir /s /q build && cd frontend && npm run build --prod && xcopy /e /i \"build\" \"../build\"",
+    "build:ui2": "cd frontend && xcopy /e /i \"build\" \"../build\""
+
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +29,7 @@
   "devDependencies": {
     "cross-env": "^6.0.3",
     "dotenv": "^8.2.0",
+    "eslint": "^7.16.0",
     "jest": "^24.9.0",
     "supertest": "^4.0.2"
   }
