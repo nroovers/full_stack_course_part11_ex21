@@ -17,10 +17,10 @@ jobs: # jobs executed when event triggered
         run: npm install  
       - name: install frontend
         run: cd frontend && npm install && cd ..
-      - name: build backend
-        run: npm run build
+      # - name: build backend
+      #   run: npm run build
       - name: build frontend
-        run: echo build-frontend
+        run: npm run build:linux
       - name: deploy
         uses: akhileshns/heroku-deploy@v3.8.8 # This is the action
         with:
