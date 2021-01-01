@@ -9,7 +9,7 @@
     "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
     "lint": "eslint .",
     "start:test": "cross-env NODE_ENV=test node index.js",
-    "build:ui": "rmdir /s /q build && cd frontend && npm run build --prod && xcopy /e /i \"build\" \"../build\"",
+    "build:ui": "rmdir /s /q build && cd frontend && npm run build && xcopy /e /i \"build\" \"../build\"",
     "build:linux": "cd frontend &&  npm run build --prod && cp -r build ../build"
 
   },
