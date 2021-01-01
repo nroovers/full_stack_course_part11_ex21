@@ -4,16 +4,15 @@ import { connect } from 'react-redux'
 import {
   BrowserRouter as Router,
   Route,
-  withRouter,
-//   Redirect
+  Redirect
 } from 'react-router-dom'
 
 // import blogsService from './services/blogs'
 // import loginService from './services/login'
 import Notification from './components/Notification'
-// import Blogs from './components/Blogs'
-// import BlogView from './components/BlogView'
-// import UserList from './components/UserList'
+import Blogs from './components/Blogs'
+import BlogView from './components/BlogView'
+import UserList from './components/UserList'
 import UserView from './components/UserView'
 // import BlogForm from './components/BlogForm'
 // import Toggable from './components/Toggable'
@@ -48,14 +47,15 @@ const App = (props) => {
     <div>
       <Router>
 
-TEST
-
         <Menu></Menu>
 
         <Notification />
 
-         <Route exact path="/users/:id" render={({ match }) => <UserView userid={match.params.id} />} />
-         <Route exact path="/login" render={() => <Login />} />
+        <Route exact path="/" render={() => props.login ? <Blogs /> : <Redirect to="/login" />} />
+        <Route exact path="/login" render={() => props.login ? <Redirect to="/" /> : <Login></Login>} />
+        <Route exact path="/blogs/:id" render={({ match }) => <BlogView blogid={match.params.id} />} />
+        <Route exact path="/users" render={() => props.login ? <UserList /> : <Redirect to="/login" />} />
+        <Route exact path="/users/:id" render={({ match }) => <UserView userid={match.params.id} />} />
       </Router>
     </div>
   )
