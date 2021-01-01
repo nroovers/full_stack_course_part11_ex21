@@ -16,7 +16,7 @@ jobs: # jobs executed when event triggered
       - name: install backend
         run: npm install  
       - name: install frontend
-        run: cd frontend && npm install cd ..
+        run: cd frontend && npm install && cd ..
       - name: build backend
         run: npm run build
       - name: build frontend
