@@ -20,6 +20,8 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     // console.log(error)
 })
 
+app.use(express.static('build'))
+
 app.use(middleware.requestLogger)
 
 app.use(cors())

@@ -34,7 +34,7 @@ const AppMenu = (props) => {
                         <Menu.Item> {props.login.name.first} logged in</Menu.Item>
                         <Menu.Item><Button onClick={handleLogout}>logout</Button></Menu.Item>
                     </>
-                    : null
+                    : <Link to='/login' >login</Link>
                 }
             </Menu.Menu>
         </Menu>

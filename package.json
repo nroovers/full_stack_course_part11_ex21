@@ -12,7 +12,6 @@
     "start:test": "cross-env NODE_ENV=test node index.js",
     "build:ui": "rmdir /s /q build && cd frontend && npm run build && xcopy /e /i \"build\" \"../build\"",
     "build:linux": "cd frontend && npm run build && cp -r build ../build"
-
   },
   "author": "",
   "license": "ISC",
