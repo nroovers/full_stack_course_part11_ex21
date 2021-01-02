@@ -46,11 +46,8 @@ const App = (props) => {
   return (
     <div>
       <Router>
-
         <Menu></Menu>
-
         <Notification />
-
         <Route exact path="/" render={() => props.login ? <Blogs /> : <Redirect to="/login" />} />
         <Route exact path="/login" render={() => props.login ? <Redirect to="/" /> : <Login></Login>} />
         <Route exact path="/blogs/:id" render={({ match }) => <BlogView blogid={match.params.id} />} />
