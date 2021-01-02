@@ -73,8 +73,8 @@ describe('api POST', () => {
 
 
         const token = await api.post('/api/login').send({
-            "username": "user2",
-            "password": "sekret123"
+            'username': 'user2',
+            'password': 'sekret123'
         })
 
 

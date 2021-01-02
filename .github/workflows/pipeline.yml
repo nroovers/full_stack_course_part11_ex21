@@ -14,11 +14,13 @@ jobs: # jobs executed when event triggered
         with:
           node-version: '12.x'
       - name: install backend
-        run: npm install  
+        run: npm install
+      - name: lint backend
+        run: npm run lint
       - name: install frontend
-        run: cd frontend && npm install && cd ..
-      # - name: build backend
-      #   run: npm run build
+        run: cd frontend && npm install
+      - name: lint frontend
+        run: cd frontend && npm run lint
       - name: build frontend
         run: cd frontend && npm run build
         env:
