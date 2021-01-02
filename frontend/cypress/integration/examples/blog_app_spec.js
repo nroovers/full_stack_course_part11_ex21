@@ -73,22 +73,22 @@ describe('Blog app', function () {
         cy.contains('Blog Title - Blog Author')
 
 
-        cy.request('http://localhost:3001/api/blogs').then(function (response) {
-            cy.log(response.body[0].id)
-            const blogId = response.body[0].id
-            cy.wait(2000)
-            cy.visit('http://localhost:3001/blogs/' + blogId)
-            cy.contains('http://www.blog.url')
+        // cy.request('http://localhost:3001/api/blogs').then(function (response) {
+        //     cy.log(response.body[0].id)
+        //     const blogId = response.body[0].id
+        //     cy.wait(2000)
+        //     cy.visit('http://localhost:3001/blogs/' + blogId)
+        //     cy.contains('http://www.blog.url')
 
-            cy.get('[data-cy=like-btn]').click()
-            cy.contains('1 likes')
+        //     cy.get('[data-cy=like-btn]').click()
+        //     cy.contains('1 likes')
 
-            cy.get('[data-cy=comment-field]').type('this is a comment')
-            cy.get('[data-cy=add-comment-btn]').click()
-            cy.wait(2000)
-            cy.contains('this is a comment')
+        //     cy.get('[data-cy=comment-field]').type('this is a comment')
+        //     cy.get('[data-cy=add-comment-btn]').click()
+        //     cy.wait(2000)
+        //     cy.contains('this is a comment')
 
-        })
+        // })
     })
 
 })
