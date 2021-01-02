@@ -29,12 +29,11 @@ jobs: # jobs executed when event triggered
         run: cd frontend && npm run build
         env:
           SKIP_PREFLIGHT_CHECK: true
-      - name: cd frontend
-        run: cd frontend 
       - name: frontend e2e tests
         uses: cypress-io/github-action@v2
         with:
           command: npm run cypress:run
+          working-directory: frontend
           start: npm run start, npm run start:server
           wait-on: http://localhost:3000, http://localhost:3001
       - name: copy frontent build folder 
