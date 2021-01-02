@@ -20,9 +20,11 @@ jobs: # jobs executed when event triggered
       # - name: build backend
       #   run: npm run build
       - name: build frontend
-        run: npm run build:linux
+        run: cd frontend && npm run build
         env:
           SKIP_PREFLIGHT_CHECK: true
+      - name: copy frontent build folder 
+        run: cp -v -R build ../build & cd .. & ls
       - name: deploy
         uses: akhileshns/heroku-deploy@v3.8.8 # This is the action
         with:
