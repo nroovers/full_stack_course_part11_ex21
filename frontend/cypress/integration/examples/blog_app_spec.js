@@ -9,7 +9,7 @@ describe('Login', function () {
             password: 'wachtwoord'
         }
         cy.request('POST', 'http://localhost:3001/api/users/', user)
-        cy.visit('http://localhost:3000')
+        cy.visit('http://localhost:3001')
     })
 
     // // it('Page loads', function () {
@@ -41,11 +41,11 @@ describe('Blog app', function () {
             password: 'wachtwoord'
         }
         cy.request('POST', 'http://localhost:3001/api/users/', user)
-        cy.visit('http://localhost:3000')
+        cy.visit('http://localhost:3001')
     })
 
     beforeEach(function () {
-        cy.visit('http://localhost:3000')
+        cy.visit('http://localhost:3001')
         cy.get('[data-cy=username]').type('nroovers')
         cy.get('[data-cy=password]').type('wachtwoord')
         cy.get('[data-cy=submit]').click()
@@ -73,11 +73,11 @@ describe('Blog app', function () {
         cy.contains('Blog Title - Blog Author')
 
 
-        cy.request('http://localhost:3000/api/blogs').then(function (response) {
+        cy.request('http://localhost:3001/api/blogs').then(function (response) {
             cy.log(response.body[0].id)
             const blogId = response.body[0].id
             cy.wait(2000)
-            cy.visit('http://localhost:3000/blogs/' + blogId)
+            cy.visit('http://localhost:3001/blogs/' + blogId)
             cy.contains('http://www.blog.url')
 
             cy.get('[data-cy=like-btn]').click()
