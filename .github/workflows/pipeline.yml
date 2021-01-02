@@ -25,8 +25,10 @@ jobs: # jobs executed when event triggered
           SKIP_PREFLIGHT_CHECK: true
       - name: copy frontent build folder 
         run: cp -v -R frontend/build build
+      - name: git config
+        run: git config --global user.email "nroovers@gmail.com" && git config --global user.name "nroovers"
       - name: git add build folder
-        run: git add build && git commit -m "commit build for Heroku" && git push origin main
+        run: git add build && git commit -m "commit build for Heroku" && git push origin main:main
       - name: deploy
         uses: akhileshns/heroku-deploy@v3.8.8 # This is the action
         with:
