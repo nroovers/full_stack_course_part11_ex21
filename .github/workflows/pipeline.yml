@@ -19,6 +19,8 @@ jobs: # jobs executed when event triggered
         run: npm run lint
       - name: test backend
         run: npm run test
+        env:
+          TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
       - name: install frontend
         run: cd frontend && npm install
       - name: lint frontend
