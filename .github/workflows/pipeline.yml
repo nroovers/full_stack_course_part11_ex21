@@ -24,7 +24,9 @@ jobs: # jobs executed when event triggered
         env:
           SKIP_PREFLIGHT_CHECK: true
       - name: copy frontent build folder 
-        run: cp -v -R frontend/build build & cd .. & ls
+        run: cp -v -R frontend/build build
+      - name: list content
+        run: ls
       - name: deploy
         uses: akhileshns/heroku-deploy@v3.8.8 # This is the action
         with:
