@@ -2,6 +2,13 @@
 
 describe('Login', function () {
     beforeEach(function () {
+        cy.request('POST', 'http://localhost:3001/api/testing/reset')
+        const user = {
+            name: 'Nicolai Roovers',
+            username: 'nroovers',
+            password: 'wachtwoord'
+        }
+        cy.request('POST', 'http://localhost:3001/api/users/', user)
         cy.visit('http://localhost:3000')
     })
 
@@ -14,7 +21,7 @@ describe('Login', function () {
         cy.get('[data-cy=username]').type('nroovers')
         cy.get('[data-cy=password]').type('wachtwoord')
         cy.get('[data-cy=submit]').click()
-        cy.contains('Nicolai Roovers logged in')
+        cy.contains('logged in')
     })
 
     it('Login faild with wrong credentials', function () {

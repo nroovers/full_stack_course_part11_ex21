@@ -21,7 +21,9 @@
     "test": "react-scripts test",
     "jest": "jest --verbose --runInBand",
     "cypress:open": "cypress open",
-    "lint": "eslint ."
+    "cypress:run": "cypress run",
+    "lint": "eslint .",
+    "start:server": "cd .. && npm run start:test"
   },
   "browserslist": {
     "production": [
