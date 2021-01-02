@@ -29,6 +29,8 @@ jobs: # jobs executed when event triggered
         run: cd frontend && npm run build
         env:
           SKIP_PREFLIGHT_CHECK: true
+      - name: copy frontent build folder 
+        run: cp -v -R frontend/build build
       - name: frontend e2e tests
         uses: cypress-io/github-action@v2
         env:
@@ -39,11 +41,9 @@ jobs: # jobs executed when event triggered
         with:
           command: npm run cypress:run
           working-directory: frontend
-          start: npm run start, npm run start:server
-          wait-on: http://localhost:3000, http://localhost:3001
+          start: npm run start:server
+          wait-on: http://localhost:3001
           wait-on-timeout: 180
-      - name: copy frontent build folder 
-        run: cp -v -R frontend/build build
       - name: git config
         run: git config --global user.email "nroovers@gmail.com" && git config --global user.name "nroovers"
       - name: git add build folder
