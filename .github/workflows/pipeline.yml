@@ -17,6 +17,8 @@ jobs: # jobs executed when event triggered
         run: npm install
       - name: lint backend
         run: npm run lint
+      - name: test backend
+        run: npm run test
       - name: install frontend
         run: cd frontend && npm install
       - name: lint frontend
@@ -31,7 +33,7 @@ jobs: # jobs executed when event triggered
         run: git config --global user.email "nroovers@gmail.com" && git config --global user.name "nroovers"
       - name: git add build folder
         run: git add build && git commit -m "commit build for Heroku" && git push origin main:main
-      - name: deploy
+      - name: deploy to heroku
         uses: akhileshns/heroku-deploy@v3.8.8 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}

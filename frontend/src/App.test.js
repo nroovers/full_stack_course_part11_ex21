@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom'
+
 /* eslint-disable indent */
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'

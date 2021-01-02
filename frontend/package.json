@@ -19,7 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "jest": "jest --verbose --runInBand",
     "cypress:open": "cypress open",
     "lint": "eslint ."
   },
@@ -37,8 +37,11 @@
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.8",
+    "@testing-library/react": "^11.2.2",
     "cypress": "^6.2.0",
     "eslint-plugin-cypress": "^2.11.2",
-    "eslint-plugin-jest": "^24.1.3"
+    "eslint-plugin-jest": "^24.1.3",
+    "react-test-renderer": "^17.0.1"
   }
 }
