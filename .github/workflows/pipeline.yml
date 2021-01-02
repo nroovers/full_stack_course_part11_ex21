@@ -27,6 +27,8 @@ jobs: # jobs executed when event triggered
         run: cp -v -R frontend/build build
       - name: list content
         run: ls
+      - name: git add build folder
+        run: git add build
       - name: deploy
         uses: akhileshns/heroku-deploy@v3.8.8 # This is the action
         with:
