@@ -34,12 +34,14 @@ jobs: # jobs executed when event triggered
         env:
           TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
           SKIP_PREFLIGHT_CHECK: true
+          SECRET: ${{ secrets.SECRET }}
           PORT: 3001
         with:
           command: npm run cypress:run
           working-directory: frontend
           start: npm run start, npm run start:server
           wait-on: http://localhost:3000, http://localhost:3001
+          wait-on-timeout: 180
       - name: copy frontent build folder 
         run: cp -v -R frontend/build build
       - name: git config
