@@ -6,7 +6,7 @@ const testhelper = require('./test_helper')
 
 const api = supertest(app)
 
-const initialBlogs = testhelper.initialBlogs
+// const initialBlogs = testhelper.initialBlogs
 
 beforeEach(async () => {
     await testhelper.initiateUsers()
@@ -42,12 +42,12 @@ describe('api GET', () => {
 
 describe('api POST', () => {
 
-    const newBlog = {
-        title: 'New blog',
-        author: 'Hanna',
-        url: 'http://www.newkidsontheblog.com',
-        likes: 1
-    }
+    // const newBlog = {
+    //     title: 'New blog',
+    //     author: 'Hanna',
+    //     url: 'http://www.newkidsontheblog.com',
+    //     likes: 1
+    // }
 
     // test('saved blog has the same title', async () => {
     //     const response = await api
