@@ -34,6 +34,7 @@ jobs: # jobs executed when event triggered
         env:
           TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
           SKIP_PREFLIGHT_CHECK: true
+          PORT: 3001
         with:
           command: npm run cypress:run
           working-directory: frontend
