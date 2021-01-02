@@ -33,6 +33,7 @@ jobs: # jobs executed when event triggered
         uses: cypress-io/github-action@v2
         env:
           TEST_MONGODB_URI: ${{ secrets.TEST_MONGODB_URI }}
+          SKIP_PREFLIGHT_CHECK: true
         with:
           command: npm run cypress:run
           working-directory: frontend
