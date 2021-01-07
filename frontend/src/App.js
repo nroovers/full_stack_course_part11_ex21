@@ -48,6 +48,7 @@ const App = (props) => {
       <Router>
         <Menu></Menu>
         <Notification />
+        Some change for ex 11.22
         <Route exact path="/" render={() => props.login ? <Blogs /> : <Redirect to="/login" />} />
         <Route exact path="/login" render={() => props.login ? <Redirect to="/" /> : <Login></Login>} />
         <Route exact path="/blogs/:id" render={({ match }) => <BlogView blogid={match.params.id} />} />
